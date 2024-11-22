@@ -1,0 +1,101 @@
+    body {
+        margin: 0;
+    }
+
+    .porteira {
+        position: fixed;
+        /* Fixa no viewport */
+        top: 100px;
+        /* Ajuste conforme necessário */
+        left: 50%;
+        /* Centraliza horizontalmente */
+        transform: translateX(-50%);
+        /* Centraliza horizontalmente */
+        width: 1500px;
+        height: 700px;
+        perspective: 1000px;
+        z-index: 10;
+        /* Fica acima do conteúdo */
+    }
+
+    .door {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        background: brown;
+        border: 2px solid black;
+        transform-style: preserve-3d;
+        transition: transform 0.1s linear;
+        z-index: 10;
+        /* Suaviza a rotação */
+    }
+
+    .beach{
+        position: absolute;
+       
+        background-image: url("./image/beach.jpg");
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        z-index:5 ;
+    }
+
+    .left-door {
+        left: 0;
+        transform-origin: left center;
+        transform: rotateY(0deg);
+        background-image: url("./image/Porta_Esquerda.png");
+        background-size: cover;
+        /* Ajusta a imagem para cobrir a porta */
+        background-position: center;
+        /* Centraliza a imagem */
+    }
+
+    .right-door {
+        right: 0;
+        transform-origin: right center;
+        transform: rotateY(0deg);
+        background-image: url("./image/Porta_Direita.png");
+            background-size: cover;
+            /* Ajusta a imagem para cobrir a porta */
+            background-position: center;
+            /* Centraliza a imagem */
+    }
+
+    .deep {
+        margin-top: 300px;
+        /* Para evitar sobreposição com a porteira */
+        width: 100%;
+        height: 200vh;
+        /* Cria o espaço para rolagem */
+        background: linear-gradient(to bottom, #fff, #ccc);
+        /* Apenas decorativo */
+    }
+        .reciples {
+            height: 100vh;
+            width: 100%;
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            /* Adicionado */
+            z-index: 20;
+            display: flex;
+            align-items:center;
+            flex-wrap: wrap;
+            max-width: 100;
+        }
+    
+        .first-image {
+            background-image: url("https://i.pinimg.com/control2/736x/4e/81/7a/4e817acb4258f61667ca441c0198a4f1.jpg");
+            position: relative;
+            /* Adicionado */
+            z-index: 20;
+        }
+        .reciples img{
+           width:25%
+        }
+        .img{
+            position: relative;
+        }

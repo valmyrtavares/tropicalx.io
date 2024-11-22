@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Parallax Document</title>
+  </head>
+  <body>
+    <section class="porteira">
+      <div class="left-door door"></div>
+      <div class="right-door door"></div>
+      <div class="beach"></div>
+    </section>
+    <div class="deep"></div>
+    <div class="reciples first-image">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/react-bar-67f33.appspot.com/o/dishes%2FIMG_7338.jpeg?alt=media&token=f11fc5a1-ab90-4d05-b0c5-69b1d3c87e42"
+        alt=""
+        class="img"
+        data-rateY="-0.9"
+        data-rateX="-1"
+      />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/react-bar-67f33.appspot.com/o/dishes%2FIMG_7372.jpeg?alt=media&token=335aa8fa-03c8-45e9-a577-5b196d45f9fe"
+        alt=""
+        class="img"
+        data-rateY="-1"
+        data-rateX="-0.2"
+      />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/react-bar-67f33.appspot.com/o/dishes%2FIMG_7399.jpeg?alt=media&token=428b472e-fe63-47a0-85b8-514a7f2261a1"
+        alt=""
+        class="img"
+        data-rateY="-0.8"
+        data-rateX="-0.6"
+      />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/react-bar-67f33.appspot.com/o/dishes%2FIMG_7410.jpeg?alt=media&token=c6c5501c-70e0-46d4-8786-f79c8e61867d"
+        alt=""
+        class="img"
+        data-rateY="-0.5"
+        data-rateX="-0.2"
+      />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/react-bar-67f33.appspot.com/o/dishes%2FImagem%20do%20WhatsApp%20de%202024-11-14%20%C3%A0(s)%2012.16.43_259ffc27.jpg?alt=media&token=322dfa6f-3d9c-4f05-8292-e646fe174527"
+        alt=""
+        class="img"
+        data-rateY="-0.3"
+        data-rateX="-1"
+      />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/react-bar-67f33.appspot.com/o/dishes%2FPitaya.jpg?alt=media&token=865c37d7-97e1-4e01-a0b2-552484efe495"
+        alt=""
+        class="img"
+        data-rateY="-0.4"
+        data-rateX="-0.2"
+      />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/react-bar-67f33.appspot.com/o/dishes%2FWhatsApp%20Image%202024-10-03%20at%2018.54.53%20(3).jpeg?alt=media&token=ea2a6fcc-8733-48f4-9eb7-63082c1dbd3b"
+        alt=""
+        class="img"
+        data-rateY="-0.2"
+        data-rateX="-0.6"
+      />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/react-bar-67f33.appspot.com/o/dishes%2Fbanana%20acai.jpeg?alt=media&token=aced7847-5697-4806-ba7f-f663467f36b1"
+        alt=""
+        class="img"
+        data-rateY="-0.6"
+        data-rateX="-0.2"
+      />
+    </div>
+
+    <script>
+      const leftDoor = document.querySelector('.left-door');
+      const rightDoor = document.querySelector('.right-door');
+      let maxScroll = 1000; // Scroll máximo para abrir completamente as portas
+
+      // Função para abrir ou fechar as portas com base no scroll
+      function handleScroll() {
+        // Obtém a posição atual do scroll
+        let scrollY = window.scrollY;
+
+        // Limita o scroll entre 0 e maxScroll
+        if (scrollY < 0) scrollY = 0;
+        if (scrollY > maxScroll) scrollY = maxScroll;
+
+        // Calcula o progresso do scroll (0 a 1)
+        let scrollProgress = scrollY / maxScroll; // Aqui é calculado a relação entre o numero que progride até o máximo permitido. Se o máximo permitido é 1000 ele vai calculando como um 0. alguma coisa. o 1 é o total, por isso 100/1000 que são os números que eu estou usando são 0.1
+
+        // Atualiza os ângulos de rotação das portas
+        const leftDoorAngle = -90 * scrollProgress; // Gira no sentido anti-horário
+        const rightDoorAngle = 90 * scrollProgress; // Gira no sentido horário
+
+        leftDoor.style.transform = `rotateY(${leftDoorAngle}deg)`;
+        rightDoor.style.transform = `rotateY(${rightDoorAngle}deg)`;
+      }
+
+      // Evento de rolagem
+      window.addEventListener('scroll', () => {
+        // Se o scroll estiver dentro do range de abertura das portas, controla a rotação
+        if (window.scrollY <= maxScroll) {
+          handleScroll();
+        }
+      });
+
+      const images = document.querySelectorAll('.img');
+
+      window.addEventListener('scroll', () => {
+        for (let i = 0; i < images.length; i++) {
+          let posY = window.pageYOffset * images[i].dataset.ratey;
+          let posX = images[i].dataset.ratex * 3;
+
+          console.log('posY' + i + ' ' + posY);
+          console.log('posX' + i + ' ' + posX);
+          images[i].style.transform = `translate3d(0px,${posY}px, 0px`;
+        }
+      });
+    </script>
+  </body>
+</html>
